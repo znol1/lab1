@@ -1,0 +1,27 @@
+<div class="panel panel-default " *ngIf="worker.name != null">
+  <div *ngIf= "worker.name != 'null' && worker.name != '' && worker.role != ''">
+    <div class="panel-heading">{{worker.name}}</div><br>
+    <div class="panel-body">
+      <strong *ngIf="worker.type === 'сотрудник'">{{worker.role}}</strong>
+      <strong *ngIf="worker.type === 'руководитель'"
+              style="color:RGBA(255,0,0,1)">{{worker.role}}</strong>
+      <p></p>
+      <strong>{{worker.tel}}</strong>
+      <br>
+      <br>
+      <form [formGroup]= "userForm" (ngSubmit)= "editWorker()">
+        <label>Имя</label>
+        <input type="text" class="form-control" formControlName= "name">
+        <label>Отдел</label>
+        <input type="text" class="form-control" formControlName= "role">
+        <label>Телефон</label>
+        <input type="text" [textMask]="{mask: mask}"
+               class="form-control" formControlName= "tel" [(ngModel)]="myModel">
+        <p></p>
+        <button type = "submit" class="btn btn-primary btn-lg"
+                [disabled]="!userForm.valid">Поменять</button>
+        <button class="btn btn-primary"  (click)="removeWorker()">Удалить</button>
+      </form>
+    </div>
+  </div>
+</div>

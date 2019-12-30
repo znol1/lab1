@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]= "userForm">
+      <div class="alert alert-info"><h1>Добавьте сотрудника или руководителя отдела</h1></div>
+      <label>Имя</label>
+      <input type="text" class="form-control" formControlName= "name">
+      <label>Отдел</label>
+      <input type="text" class="form-control" formControlName= "role">
+      <label>Телефон</label>
+      <input type="text" [textMask]="{mask: mask}" class="form-control" formControlName= "tel" [(ngModel)]="myModel">
+      <p></p>
+      <button type = "submit" class="btn btn-primary btn-lg" (click)="onAddWorker()"
+              [disabled]="!userForm.valid">Добавить сотрудника</button>
+      <button type = "submit" class="btn btn-primary btn-lg" (click)="onAddHeadWorker()"
+              [disabled]="!userForm.valid">Добавить босса</button>
+    </form>
+  </div>
+</div>
